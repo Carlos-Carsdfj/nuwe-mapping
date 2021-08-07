@@ -1,5 +1,5 @@
-# Cromo de NFt del perfil de usuario 
-## Reto individual semana 2 del Summer Coding League de Nuwe
+# MAPPING, FIND YOUR PLACE
+## Reto individual semana 3 del Summer Coding League de Nuwe
 ## Link al demo de la solución [ nuwe/mapping](https://nuwe-mapping.vercel.app)
 ### User stories 📝
 ```
