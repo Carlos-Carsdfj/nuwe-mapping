@@ -5,15 +5,22 @@
 ```
 Para este reto proponemos lo siguiente:
 
-Task-1: Integrar una API de mapas en el front y visualizar un por pantalla un mapa que ocupe 2/3 de la pantalla y el otro 1/3 que lo ocupe un div para colocar un menu de selección y búsqueda.
-Task-2: Maquetar la barra de búsquedas lateral sin incluir ningún tipo de funcionalidad
-Task-3: Los elementos Destacados son botones de selección que permiten hacer búsquedas filtradas en la APIs. Estos botones al ser seleccionados deben cambiar de color y permancer así hasta que se vuelvan a clicar o se genere una nueva búsqueda.
-Task-4: Al hacer clic en el botón buscar si no se ha encontrado nada debe aparecer un diálogo que se lo transmita al usuario. Después de esto, todos los filtros de búsqueda se tienen que reiniciar.
-Task-5: Aplicación de filtros de búsqueda:
-Al clicar en cada uno de los destacados debe mostrar los restaurantes, parques o bares que hay en un radio de unos 10Km al rededor del usaurio.
-Si se hace click en varios, se tiene que volver a aplicar los filtros para ver tantos lugares como filtros se han seleccionado.
+*Task-1: Integrar una API de mapas en el front y visualizar un por pantalla un mapa que ocupe 2/3 de 
+la pantalla y el otro 1/3 que lo ocupe un div para colocar un menu de selección y búsqueda.
+*Task-2: Maquetar la barra de búsquedas lateral sin incluir ningún tipo de funcionalidad
+*Task-3: Los elementos Destacados son botones de selección que permiten hacer búsquedas 
+filtradas en la APIs. Estos botones al ser seleccionados deben cambiar de color y permancer así 
+hasta que se vuelvan a clicar o se genere una nueva búsqueda.
+*Task-4: Al hacer clic en el botón buscar si no se ha encontrado nada debe aparecer un diálogo que se
+lo transmita al usuario. Después de esto, todos los filtros de búsqueda se tienen que reiniciar.
+*Task-5: Aplicación de filtros de búsqueda:
+Al clicar en cada uno de los destacados debe mostrar los restaurantes, parques o bares que hay en un radio 
+de unos 10Km al rededor del usaurio.
+Si se hace click en varios, se tiene que volver a aplicar los filtros para ver tantos lugares como filtros se
+han seleccionado.
 Por defecto si la distancia desde mi posición no ha sido movida, establecerla en 10km.
-Task-6: Finalmente además de poder hacer búsqueda por filtros, el usuario debe poder hacer búsqueda por autocompletado a través de la barra de búsqueda.
+*Task-6: Finalmente además de poder hacer búsqueda por filtros, el usuario debe poder hacer búsqueda por autocompletado
+a través de la barra de búsqueda.
 ```
 
 
@@ -46,3 +53,49 @@ del diseño de interfaz de usuario así como algunos otros componentes que facil
    * **Mapbox-gl**: Colección de bibliotecas de código abierto desarrolladas por Mapbox para insertar los mapas deslizantes adaptables en las aplicaciones Web, móviles, y de escritorio.    
 
    * **Mapbox-gl**: Es una una libreria de componentes de React diseñado para proveer una Api de React compatible con **Mapbox-gl** e integrarlo de una manera mas facil a nuestros proyectos con **React**.
+
+## Directorio en arbol del proyecto
+
+```
+├── next.config.js
+├── package.json
+├── package-lock.json
+├── pages
+│   ├── api
+│   │   └── hello.js
+│   ├── _app.js
+│   ├── _document.js
+│   └── index.js
+├── public
+│   ├── favicon.ico
+│   ├── food.svg
+│   ├── locationIcon.svg
+│   ├── Nuwe_Mono.svg
+│   ├── Search.svg
+│   ├── selectedFood.svg
+│   ├── selectedSubtract.svg
+│   ├── selectedUnion.svg
+│   ├── Subtract.svg
+│   ├── Union.svg
+│   └── vercel.svg
+├── README.md
+├── src
+│   ├── components
+│   │   ├── FindYourPlace
+│   │   │   ├── index.js
+│   │   │   ├── SearchForm.js
+│   │   │   └── SvgIcons.js
+│   │   ├── MapContainer.js
+│   │   └── Map.js
+│   ├── context
+│   │   └── useContext.js
+│   ├── hooks
+│   │   ├── useCheckButton.js
+│   │   └── useSearch.js
+│   └── service
+│       └── placesSearch.js
+├── styles
+│   └── theme.js
+└── yarn.lock
+
+```
