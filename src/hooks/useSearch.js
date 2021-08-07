@@ -30,7 +30,7 @@ const useSearch = () =>{
         if(places.length >0){    
           setLocations(places)
         }else{
-          setErrorLocations(false)
+          setErrorLocations(true)
         }      
       })     
     }

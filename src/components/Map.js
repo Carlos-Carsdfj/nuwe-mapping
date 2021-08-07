@@ -1,10 +1,30 @@
 import { useState } from "react"
 import Image from 'next/image'
 import ReactMapGL, { Marker, Popup, GeolocateControl} from "react-map-gl"
+import RestaurantIcon from '@material-ui/icons/RestaurantMenu'
+import NatureIcon from '@material-ui/icons/NaturePeople'
+import DrinkIcon from '@material-ui/icons/LocalDrink';
+import { IconButton, makeStyles } from '@material-ui/core'
 import useMapContext from '../context/useContext.js'
+
+const useStyles = makeStyles((theme)=>({
+    pubIcon:{
+      fontSize:35,
+      color:theme.palette.primary.main
+    },
+    restIcon:{
+      fontSize:35,
+      color:theme.palette.error.main
+    },
+    parkIcon:{
+      fontSize:35,
+      color:theme.palette.warning.main
+    },
+  }))
 
 export default function Map({ locations }) {
 
+  const classes = useStyles()
   const [ selectedLocaton,setSelectedLocation ] = useState({})
   const { currentLocation, setCurrentLocation } = useMapContext()
   const [ viewport, setViewport] = useState({
@@ -61,13 +81,15 @@ return <ReactMapGL
             offsetLeft={-20}
             offsetTop={-10}
           >
-            <a 
+            <IconButton 
+              className={classes.iconButton} 
               onClick={() => {
                 setSelectedLocation(location)
               }}
-            >
-              <span role='img'aria-label="push-pin">📌</span>          
-            </a>           
+            >  {location.type_search === 'pub' && <DrinkIcon className={classes.pubIcon} />}
+              {location.type_search === 'park' && <NatureIcon  className={classes.parkIcon} />}
+              {location.type_search === 'restaurant' && <RestaurantIcon className={classes.restIcon}/>}
+            </IconButton>           
           </Marker>
           {selectedLocaton.id === location.id ?
             <Popup

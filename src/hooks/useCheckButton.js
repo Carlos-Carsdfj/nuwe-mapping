@@ -3,10 +3,13 @@ import { useState, useEffect } from 'react'
 const useCheckButton = (val) => {
   const [ isSelected, setIsSelected ] = useState(false)
   const [ value, setValue ] = useState('')
+
   const toggle = () =>{
     setIsSelected(prev => !prev )
   }
-  
+  const reset = ()=>{
+    setIsSelected(false)
+  }
   const getValueIfSelected = ()=>{
     if(isSelected){
       setValue(val)
@@ -25,6 +28,7 @@ const useCheckButton = (val) => {
     isSelected,
     value,
     toggle,
+    reset,
   }
 }
 

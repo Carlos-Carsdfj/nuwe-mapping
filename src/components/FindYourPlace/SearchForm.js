@@ -5,12 +5,14 @@ import {
   Button, 
   Slider,
   Typography,
-  Box
+  Divider
 } from '@material-ui/core/'
 import useSearch from '../../hooks/useSearch'
 import useCheckButton from '../../hooks/useCheckButton.js'
+import { FoodIcon, PubIcon, ParkIcon }  from './SvgIcons.js'
 import foodIcon from '../../../public/food.svg'
 import foodSelected from '../../../public/selectedFood.svg'
+    
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin:0,
@@ -26,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
   radioGroup: {
     display:'none'
   },
+  divider:{
+  backgroundColor:theme.palette.secondary.main
+  }
 }))
 
 
@@ -60,18 +65,22 @@ export default function ErrorRadios() {
       distance:valueText*1000
     }
     places.length > 0 && setFilter(search)
-  }
+    park.reset()
+    restaurant.reset()
+    pub.reset()
+    setValueText(1)
 
+  }
+  
   const handlerChange= (ev, newValue ) =>{
     setValueText(newValue)  
   }
 
   return (
     <>
-      <Box 
-        display='flex' 
-        flexDirection='column'
+      <div 
       >
+        <Divider  className={classes.divider} />
         <Typography
           variant='subtitle1'
           component='h2'
@@ -86,64 +95,45 @@ export default function ErrorRadios() {
         >
         Selecciona algunos de los marcadores por defecto que hemos seleccionado para ti
         </Typography>
-      </Box>
+      </div>
       <form onSubmit={handleSubmit} className={classes.formControl}>
           <Button variant='outlined' color={restaurant.isSelected ? 'primary' : 'secondary'} 
             onClick={()=>restaurant.toggle()}
-            startIcon={
-              <Image 
-                src={
-                  restaurant.isSelected ?
-                  '/selectedFood.svg'
-                  :'/food.svg'
-                } 
-                width={20}  
-                height={20} 
-                alt='food Icon'
-              />}
-            
+            startIcon={<FoodIcon color={restaurant.isSelected ? 'primary' : 'secondary'}/>}
           >
             Restaurantes 
           </Button>
           <Button variant='outlined' color={park.isSelected ? 'primary' : 'secondary'} 
             onClick={()=>park.toggle()} 
-            startIcon={
-              <Image 
-                src={
-                  park.isSelected ?
-                  '/selectedUnion.svg'
-                  :'/Union.svg' 
-                }
-                width={20} height={20}
-                alt='park Icon '
-              />}
+            startIcon={<ParkIcon color={park.isSelected ? 'primary' : 'secondary'}/>}
           >
              Parques y sitios al aire libre 
           </Button>      
           <Button variant='outlined' color={pub.isSelected ? 'primary' : 'secondary'} 
             onClick={()=>pub.toggle()} 
-            startIcon={
-              <Image 
-                src={
-                  pub.isSelected ?
-                  '/selectedSubtract.svg'
-                  :'/Subtract.svg'
-                }
-                width={20} 
-                height={20} 
-                alt='Pub Icon Icon'
-              />}
+            startIcon={<PubIcon color={pub.isSelected ? 'primary' : 'secondary'}/>}
           >
             Bares  
           </Button>
-          <Slider
-            orientation="horizontal"
-            onChange={handlerChange}
-            value={valueText}
-            min={1}
-            max={30}
-            aria-labelledby="distance-slider"
-          />
+          <div 
+          >
+            <Typography
+              variant='subtitle1'
+              component='h2'
+              color='secondary'
+            >
+              Distancia desde mi posición ({valueText}km)
+            </Typography>
+            <Slider
+              orientation="horizontal"
+              onChange={handlerChange}
+              value={valueText}
+              min={1}
+              max={30}
+              aria-labelledby="distance-slider"
+            />
+          </div>
+          <Divider  className={classes.divider} />
           <Button type="submit" variant="contained" color="primary" >
             Buscar
           </Button>

@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme)=>({
     justifyContent:'space-around',
     height:'100%',
   },
+  textTitle:{
+    fontWeight:700
+  },
   textField:{
     borderColor:theme.palette.secondary.main,
     '& :valid + fieldset':{
@@ -46,6 +49,7 @@ const useStyles = makeStyles((theme)=>({
         component='h1'
         color='secondary'
         gutterBottom
+        className={classes.textTitle}
       >
         FIND YOUR PLACE
       </Typography>
@@ -73,8 +77,6 @@ const useStyles = makeStyles((theme)=>({
           )         
         }}
       />
-
-      <Divider  className={classes.divider} />
       <SearchForm/>
     </Paper>)
 }

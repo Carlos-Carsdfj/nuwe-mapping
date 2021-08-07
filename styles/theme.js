@@ -18,7 +18,16 @@ const theme = createTheme({
       dark: '#CDCDCD',
       light: '#FFFFFF'
     },
+    warning:{
+      main:'#130F26'
+    }
+  },
+  typography: {
+  fontFamily: [
+    'Montserrat',
+    'Roboto'
+  ].join(','),
   }
-});
+})
 
 export default theme;

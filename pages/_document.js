@@ -15,6 +15,8 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
+          <link rel="preconnect" href="https://fonts.googleapis.com"/>
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
         </Head>
         <body style={{ background: theme.palette.background.main }}>
           <Main />

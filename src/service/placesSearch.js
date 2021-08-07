@@ -4,7 +4,12 @@
  
   try{
    const resp =  await fetch(url).then(response =>response.text()).then(res => JSON.parse(res))
-    return resp.features
+    return resp.features.map(res =>{
+      return {
+        ...res,
+        type_search:place
+      }
+    })
   } catch(error){
     console.error(error)
     return 
