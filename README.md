@@ -106,5 +106,19 @@ Para este desafio toma la desicion de trabajar con **Nextjs** por la facilidad c
 tambien  use **Material-ui** para el diseño por lo que la estructura base de este proyecto fue siguiendo el ejemplo que mismo material ui nos provee 
 en su pagina y que a su vez es siguiendo el ejemplo que nos entrega el mismo **Next.js**, [Material-ui/example](https://github.com/mui-org/material-ui/tree/master/examples/nextjs).
 
-**Material-ui** Fue diseñado desde cero con la restricción del renderizado desde el lado del servidor pero hay que implementarlo correctamente en nuestro proyecto de **Nextjs** para aprovechar el uso de este Framework al maximo, y evitar el parpadeo que podemos observar en  algunas paginas en el que el  crea el contenido html es cargado primero y luego se le inyecta los estilos css  se hace uso de 
+**Material-ui** Fue diseñado desde cero con la restricción del renderizado desde el lado del servidor pero hay que implementarlo correctamente en nuestro proyecto de **Nextjs** para aprovechar el uso de este Framework al maximo, y evitar el parpadeo que podemos observar en  algunas paginas en el que  el contenido html es cargado primero y luego espera al que el cliente inyecte el css requerido. 
+
+Para lograr una perfecta integracion del renderizado  en el servidor se hace uso de [ServerStyleSheets](https://material-ui.com/es/styles/api/#serverstylesheet)
+este lo implementaremos en el **_document.js**
+```
+├── pages
+│   ├── api
+│   │   └── hello.js
+│   ├── _app.js
+│   ├── _document.js
+│   └── index.js
+```
+
+
+
 
