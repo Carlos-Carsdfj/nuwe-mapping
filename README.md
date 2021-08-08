@@ -399,4 +399,6 @@ Lo sencillo de usar el componente **ReactMapGL** es que podemos pasarle como hij
 
 export default placesSearch
  ```
- 
+ En este url tenemos **place** que es el tipo de lugar que buscamos, **bbox**que es el rango que busqueda desde nuestra localizacion actual 
+ y el token de acceso el cual como se dijo antes es un token publico y no hay problema el exponerlo 
+ requcperamos los datos de dicha petición y returnamos un  array.map le agregamos a cada objeto del array la información del tipo de lugar del que se realizo la busqueda esto se hace porque  nuestro **locations**(array contenido en  **useMapContext** )tendra varios tipos de busqueda de varios lugares y necesitamos diferenciarlos de alguna forma.
