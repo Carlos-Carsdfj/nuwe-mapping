@@ -294,7 +294,7 @@ por lo que los datos los tendremos en un estado global echo con useContext para 
  [mapbox-styles](https://docs.mapbox.com/studio-manual/guides/map-styling/) y [react-map-gl/getstarted](https://visgl.github.io/react-map-gl/docs/get-started/get-started)
 #
 
-### Geolocalizacion
+### Geolocalizacion:
 
 Lo sencillo de usar el componente **ReactMapGL** es que podemos pasarle como hijo ciertos componente que el detectara como componentes de control,componentes  de navegacion, marcado entre otros .  Asi mismo podemos pasarle el **GeolocateControl**.
    ```
@@ -307,6 +307,64 @@ Lo sencillo de usar el componente **ReactMapGL** es que podemos pasarle como hij
     />
    ```
  [GeolocateControl](https://visgl.github.io/react-map-gl/docs/api-reference/geolocate-control), este componente nos sirve para la geolocalización y asi mismo la reubicación de nuestro punto central en el mapa en **onGeolocate** la pasamos una funcion con el que podemos recuperar una serie de datos cuando ocurre la geolocalizacion en tre ellos la latitud y longitud que guardaremos en nuestro **setCurrentLocation**
+ #
+ 
+ 
+ ### Marcando el mapa:
+   las **Marker** nos sirve para dibujar en el mapa 
+   
+   ```
+      <Marker latitude={currentLocation[1]} longitude={currentLocation[0]}
+        offsetLeft={0}
+        offsetTop={0}
+      >
+        <Image src='/locationIcon.svg' alt='current location icon' 
+          width={20}
+          height={20}
+        />
+      </Marker>
+   ```
+   Con la **currentLocation** podemos marcar el lugar central de donde estamos localizados para no perdernos de vista en ningun momento
+   
+   
+   ```
+         locations.map((location) => (
+        <div key={location.id}>
+          <Marker 
+            latitude={location.center[1]}
+            longitude={location.center[0]}
+            offsetLeft={-20}
+            offsetTop={-10}
+          >
+            <IconButton 
+              className={classes.iconButton} 
+              onClick={() => {
+                setSelectedLocation(location)
+              }}
+            >  {location.type_search === 'pub' && <DrinkIcon className={classes.pubIcon} />}
+              {location.type_search === 'park' && <NatureIcon  className={classes.parkIcon} />}
+              {location.type_search === 'restaurant' && <RestaurantIcon className={classes.restIcon}/>}
+            </IconButton>           
+          </Marker>
+          {selectedLocaton.id === location.id ?
+            <Popup
+              onClose={() => setSelectedLocation({})}
+              closeOnClick={true}
+              latitude={ location.center[1] }
+              longitude={ location.center[0]}
+            >
+              {location.place_name}
+            </Popup> 
+            : false            
+          }
+        </div>
+   ```
+   Aprovechando la funcionalidad de las **Marker**
+   marcamos todos los lugares que se encuentran en el **locations**,  este es un array  que podemos recuperar de nuestro **useMapContext**
+   y que tiene todos los resultados de la busqueda de lugares  esto sera  relevante mas adelante,
+  tambien colocamos cierto icono caracteristico dependiente del **type_search** en el objeto recuperado de la iteración del array. 
+  
+  Le colocamos tambien un **Popup** ligado en cada iteración para pode ver información de cada lugar  al seleccionarlo    
  
  
  
