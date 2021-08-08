@@ -112,6 +112,8 @@ del diseño de interfaz de usuario así como algunos otros componentes que facil
 
 
 ## Sobre la solución 
+<img src="https://miro.medium.com/max/2000/1*8mjuQTYRCSniAAK9jJeOSA.png" width="400" height="200" />
+
 
 Para este desafio toma la desicion de trabajar con **Nextjs** por la facilidad con que este puede crearnos citios rapidos y con buen Seo,
 tambien  use **Material-ui** para el diseño por lo que la estructura base de este proyecto fue siguiendo el ejemplo que mismo material ui nos provee 
