@@ -292,5 +292,22 @@ por lo que los datos los tendremos en un estado global echo con useContext para 
  
  ademas podemos elegir el tipo de estilos todo esto lo tienes mejor definido en la documentación 
  [mapbox-styles](https://docs.mapbox.com/studio-manual/guides/map-styling/) y [react-map-gl/getstarted](https://visgl.github.io/react-map-gl/docs/get-started/get-started)
+#
 
+### Geolocalizacion
 
+Lo sencillo de usar el componente **ReactMapGL** es que podemos pasarle como hijo ciertos componente que el detectara como componentes de control,componentes  de navegacion, marcado entre otros .  Asi mismo podemos pasarle el **GeolocateControl**.
+   ```
+   <GeolocateControl
+      style={geolocateControlStyle}
+      positionOptions={{enableHighAccuracy: true}}
+      trackUserLocation={true}
+      onGeolocate={handler}
+      auto
+    />
+   ```
+ [GeolocateControl](https://visgl.github.io/react-map-gl/docs/api-reference/geolocate-control), este componente nos sirve para la geolocalización y asi mismo la reubicación de nuestro punto central en el mapa en **onGeolocate** la pasamos una funcion con el que podemos recuperar una serie de datos cuando ocurre la geolocalizacion en tre ellos la latitud y longitud que guardaremos en nuestro **setCurrentLocation**
+ 
+ 
+ 
+ 
