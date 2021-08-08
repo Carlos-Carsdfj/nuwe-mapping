@@ -236,7 +236,7 @@ Si bien es verdad que **google map**  es una poderosa plataforma y que a demas d
 
 ### Utilizando React-map-gl:
 
-El mayor uso de esta libreria y sus componentes estan en el archivo **Map.js**
+El mayor uso de esta libreria y sus componentes estan en el archivo **Map.js**.
 
 
 ```
@@ -244,10 +244,53 @@ El mayor uso de esta libreria y sus componentes estan en el archivo **Map.js**
 │   │   └── Map.js
 ```
 #
- ```
+Las dependencias claves de este componente son estos:
+```
+import { useState } from "react"
+import ReactMapGL, { Marker, Popup, GeolocateControl} from "react-map-gl"
+import useMapContext from '../context/useContext.js'
+```
+#
+Una de las primeras cosas que podemos notar en este este componente  es el uso de un useState para guardar propiedades
+que se le pasaran a otro  componente que renderizara el mapa, al **ReactMapGL**
+esto debido a que el dicho componente necisita cambiar sus valores constantemente dependiendo de la interacción que tenemos con el mapa y para ver los cambios en tiempo real en una app es imprescindible el uso de usState en toda propiedad que cambie y se renderice dicho cambio al instante 
+
+```
+  const [ viewport, setViewport] = useState({
+  // The latitude and longitude of the center of London
+    width:'100%',
+    height:'100%', 
+    latitude: 51.5974,
+    longitude: -0.1278,
+    zoom: 10,
+  });
+```
  
- ´´´
+#
+```
+  const { currentLocation, setCurrentLocation } = useMapContext()
+```
+Este es el estado que representa el punto inicial de nuestra localizacion 
+por defecto viene con los mismo datos latitud y longitud con el que iniciamos las props del 
+**ReactMapGL** pero veremos mas adelante que estos datos pueden cambiar y necesitaremos en siempre los datos 
+actuales del punto centro de nuestra localizacion para ser usados mas adelante en este componente y en el servicio **placesSearch.js**
+por lo que los datos los tendremos en un estado global echo con useContext para ser compartido de forma mas facil y eficiente 
+#
 
-
+```
+ <ReactMapGL
+  {...viewport}
+  mapStyle="mapbox://styles/mapbox/streets-v11"
+  mapboxApiAccessToken={process.env.NEXT_PUBLIC_KEY}
+  onViewportChange={setViewport}
+  >
+ ```
+ Este es el ejecutador de la magia principal el **ReactMapGl**
+ le pasamos las props configuradas antes en el useState y le pasamos tambien el 
+ control de dicho stado ademas del token publico necesario que nos provee mapbox como usuario 
+ para que el componente pueda hacer las peticiones necesarias y funcionar sin problemas 
+ 
+ ademas podemos elegir el tipo de estilos todo esto lo tienes mejor definido en la documentación 
+ [mapbox-styles](https://docs.mapbox.com/studio-manual/guides/map-styling/) y [react-map-gl/getstarted](https://visgl.github.io/react-map-gl/docs/get-started/get-started)
 
 
