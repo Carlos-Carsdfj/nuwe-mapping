@@ -100,6 +100,17 @@ del diseño de interfaz de usuario así como algunos otros componentes que facil
 
 ```
 
+
+
+<img src="https://firebasestorage.googleapis.com/v0/b/first-challenge-nuwe.appspot.com/o/readmeImagenes%2Fbuscar.svg?alt=media&token=9129a939-ecd5-4e3a-bfa7-ec8d028598dd" width="200" height="200" />
+
+
+ ## Calidad del codigo
+ Ve el el resultado del analicis del codigo generado para este reto
+### [CodeFactor](https://www.codefactor.io/repository/github/carlos-carsdfj/nuwe-mapping)
+### [Sonarcloud](https://sonarcloud.io/dashboard?id=Carlos-Carsdfj_nuwe-mapping)
+
+
 ## Sobre la solución 
 
 Para este desafio toma la desicion de trabajar con **Nextjs** por la facilidad con que este puede crearnos citios rapidos y con buen Seo,
@@ -228,7 +239,9 @@ Al hacer esto, permitimos que el cliente se encargue de diseñar la aplicación 
 
 
 
+
 ### Renderizando un mapa en nuestra aplicación con Mapbox:
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Mapbox_logo_2017.svg" width="200" height="200" />
 Se utilizo este proovedor de mapas en linea por por la cantidad de de herramientas, librerias y Sdk que posee, tambien por  la personalizacion y el estilo que nos ofrece , es un proovedor que no nos limita tanto como **Google map** y otras plataformas, utiliza la base de datos tanto de   **OpenStreetMap** como de la **NASA**.
 
 Si bien es verdad que **google map**  es una poderosa plataforma y que a demas de rapida posee buena documentación y tiene buenas herramientas nos limita el desarrollo de aplicaciones y ademas por la  información bancaria que aunque no fueramos  a necesitar nunca pagar nada tenemos que estar obligados a proveerle si por que si, por esta razon fue desplazado como opcion viable para este proyecto.
@@ -295,7 +308,7 @@ por lo que los datos los tendremos en un estado global echo con useContext para 
 #
 
 ### Geolocalizacion:
-
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Relojlaboral124.png" width="200" height="200" />
 Lo sencillo de usar el componente **ReactMapGL** es que podemos pasarle como hijo ciertos componente que el detectara como componentes de control,componentes  de navegacion, marcado entre otros .  Asi mismo podemos pasarle el **GeolocateControl**.
    ```
    <GeolocateControl
