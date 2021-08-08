@@ -367,5 +367,36 @@ Lo sencillo de usar el componente **ReactMapGL** es que podemos pasarle como hij
   Le colocamos tambien un **Popup** ligado en cada iteración para pode ver información de cada lugar  al seleccionarlo    
  
  
+ ### Haciendo peticiones de busqueda:
  
+ La petición  de los lugares que deseamos encontrar
+ se hace en el siguiente archivo 
+ 
+ ```
+  │── service
+       └── placesSearch.js
+ 
+ ```
+ ```
+  const  placesSearch= async ({ place, bbox }) =>{
+
+  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json?bbox=${bbox[0][0]},${bbox[0][1]},${bbox[1][0]},${bbox[1][1]}&access_token=pk.eyJ1IjoiY2Fyc2QtZmoiLCJhIjoiY2twZnlwN3RzMDNyajJybXpobDQxbzNoMiJ9.u2-iSz39PdqG5BRvZVZ2ag`
+ 
+  try{
+   const resp =  await fetch(url).then(response =>response.text()).then(res => JSON.parse(res))
+    return resp.features.map(res =>{
+      return {
+        ...res,
+        type_search:place
+      }
+    })
+  } catch(error){
+    console.error(error)
+    return 
+  }
+     
+}
+
+export default placesSearch
+ ```
  
