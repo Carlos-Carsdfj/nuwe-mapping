@@ -119,7 +119,7 @@ este lo implementaremos en el **_document.js** el cual es un archivo que se proc
 │   └── index.js
 
 ```
-###
+#
 ```
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
@@ -224,6 +224,10 @@ MyApp.propTypes = {
 ```
 
 Al hacer esto, permitimos que el cliente se encargue de diseñar la aplicación tan pronto como esté lista.
+
+
+
+
 
 
 
