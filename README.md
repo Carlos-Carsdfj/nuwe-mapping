@@ -170,4 +170,11 @@ MyDocument.getInitialProps = async (ctx) => {
   };
 };
 
+```
+Lo que estamos haciendo aquí es recopilar los estilos CSS necesarios generados por Material-UI e inyectarlos en el documento como una cadena.
+De esta forma evitamos cualquier parpadeo cuando el cliente recibe la página.
 
+
+
+### Quitando css proveniente del lado del cliente
+Ahora lo que necesitamos es evitar que next inyecte los estilos css en el lado del servidor que vienen del lado del cliente
