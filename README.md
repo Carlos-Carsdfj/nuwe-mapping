@@ -106,7 +106,7 @@ Para este desafio toma la desicion de trabajar con **Nextjs** por la facilidad c
 tambien  use **Material-ui** para el diseño por lo que la estructura base de este proyecto fue siguiendo el ejemplo que mismo material ui nos provee 
 en su pagina y que a su vez es siguiendo el ejemplo que nos entrega el mismo **Next.js**, [Material-ui/example](https://github.com/mui-org/material-ui/tree/master/examples/nextjs).
 
-**Material-ui** Fue diseñado desde cero con la restricción del renderizado desde el lado del servidor pero hay que implementarlo correctamente en nuestro proyecto de **Nextjs** para aprovechar el uso de este Framework al maximo, y evitar el parpadeo que podemos observar en  algunas paginas en el que  el contenido html es cargado primero y luego espera al que el cliente inyecte el css requerido. 
+**Material-ui** Fue diseñado desde cero con la restricción del renderizado en  el lado del servidor pero hay que implementarlo correctamente en nuestro proyecto de **Nextjs** para aprovechar el uso de este Framework al maximo, y evitar el parpadeo que podemos observar en si  el contenido html es cargado primero y luego espera al que el cliente inyecte el css requerido . 
 
 Para lograr una perfecta integracion del renderizado  en el servidor se hace uso de [ServerStyleSheets](https://material-ui.com/es/styles/api/#serverstylesheet)
 este lo implementaremos en el **_document.js** el cual es un archivo que se procesa solo del lado del servidor y se usa para Costumezar el Documento que viene por defecto en [next/Document](https://nextjs.org/docs/advanced-features/custom-document)
@@ -172,9 +172,60 @@ MyDocument.getInitialProps = async (ctx) => {
 
 ```
 Lo que estamos haciendo aquí es recopilar los estilos CSS necesarios generados por Material-UI e inyectarlos en el documento como una cadena.
-De esta forma evitamos cualquier parpadeo cuando el cliente recibe la página.
+De esta forma mandamos el css necesario al cliente y  evitamos cualquier parpadeo cuando el cliente recibe la página y solo tenga que diseñarla.
 
 
 
-### Quitando css proveniente del lado del cliente
-Ahora lo que necesitamos es evitar que next inyecte los estilos css en el lado del servidor que vienen del lado del cliente
+### Quitando css proveniente del lado del cliente:
+Ahora lo que necesitamos es eliminar los  estilos css en el lado del servidor que se inyectaron desde el lado del cliente
+con un useEffect  eliminamos dichos estilos y esto lo hacemos en el _app.js .
+
+
+```
+import React from 'react'
+import PropTypes from 'prop-types'
+import Head from 'next/head'
+import { ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import theme from '../styles/theme.js'
+import { MapContextProvider } from '../src/context/useContext.js'
+export default function MyApp(props) {
+  const { Component, pageProps } = props;
+
+  React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+
+  return (
+    <React.Fragment>
+      <Head>
+        <title>Nuwe</title>
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+      </Head>
+      <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        <MapContextProvider>
+          <Component {...pageProps} />
+        </MapContextProvider>
+      </ThemeProvider>
+    </React.Fragment>
+  );
+}
+
+MyApp.propTypes = {
+  Component: PropTypes.elementType.isRequired,
+  pageProps: PropTypes.object.isRequired,
+};
+```
+
+Al hacer esto, permitimos que el cliente se encargue de diseñar la aplicación tan pronto como esté lista.
+
+
+
+
+
