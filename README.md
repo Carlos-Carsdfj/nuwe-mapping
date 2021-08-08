@@ -312,6 +312,7 @@ por lo que los datos los tendremos en un estado global echo con useContext para 
 ### Geolocalizacion:
 <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Relojlaboral124.png" width="200" height="200" />
 Lo sencillo de usar el componente **ReactMapGL** es que podemos pasarle como hijo ciertos componente que el detectara como componentes de control,componentes  de navegacion, marcado entre otros .  Asi mismo podemos pasarle el **GeolocateControl**.
+
    ```
    <GeolocateControl
       style={geolocateControlStyle}
@@ -321,6 +322,7 @@ Lo sencillo de usar el componente **ReactMapGL** es que podemos pasarle como hij
       auto
     />
    ```
+   
  [GeolocateControl](https://visgl.github.io/react-map-gl/docs/api-reference/geolocate-control), este componente nos sirve para la geolocalización y asi mismo la reubicación de nuestro punto central en el mapa en **onGeolocate** la pasamos una funcion con el que podemos recuperar una serie de datos cuando ocurre la geolocalizacion en tre ellos la latitud y longitud que guardaremos en nuestro **setCurrentLocation**
  #
  
