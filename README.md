@@ -109,7 +109,7 @@ en su pagina y que a su vez es siguiendo el ejemplo que nos entrega el mismo **N
 **Material-ui** Fue diseñado desde cero con la restricción del renderizado desde el lado del servidor pero hay que implementarlo correctamente en nuestro proyecto de **Nextjs** para aprovechar el uso de este Framework al maximo, y evitar el parpadeo que podemos observar en  algunas paginas en el que  el contenido html es cargado primero y luego espera al que el cliente inyecte el css requerido. 
 
 Para lograr una perfecta integracion del renderizado  en el servidor se hace uso de [ServerStyleSheets](https://material-ui.com/es/styles/api/#serverstylesheet)
-este lo implementaremos en el **_document.js**
+este lo implementaremos en el **_document.js** el cual es un archivo que se procesa solo del lado del servidor y se usa para Costumezar el Documento que viene por defecto en [next/Document](https://nextjs.org/docs/advanced-features/custom-document)
 ```
 ├── pages
 │   ├── api
