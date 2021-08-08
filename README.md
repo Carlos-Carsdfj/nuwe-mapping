@@ -52,7 +52,7 @@ del diseño de interfaz de usuario así como algunos otros componentes que facil
   
    * **Mapbox-gl**: Colección de bibliotecas de código abierto desarrolladas por Mapbox para insertar los mapas deslizantes adaptables en las aplicaciones Web, móviles, y de escritorio.    
 
-   * **Mapbox-gl**: Es una una libreria de componentes de React diseñado para proveer una Api de React compatible con **Mapbox-gl** e integrarlo de una manera mas facil a nuestros proyectos con **React**.
+   * **React-map-gl**: Es una una libreria de componentes de React diseñado para proveer una Api de React compatible con **Mapbox-gl** e integrarlo de una manera mas facil a nuestros proyectos con **React**.
 
 ## Directorio en arbol del proyecto
 
@@ -228,7 +228,25 @@ Al hacer esto, permitimos que el cliente se encargue de diseñar la aplicación 
 
 
 
+### Renderizando un mapa en nuestra aplicación con Mapbox:
+Se utilizo este proovedor de mapas en linea por por la cantidad de de herramientas, librerias y Sdk que posee, tambien por  la personalizacion y el estilo que nos ofrece , es un proovedor que no nos limita tanto como **Google map** y otras plataformas, utiliza la base de datos tanto de   **OpenStreetMap** como de la **NASA**.
 
+Si bien es verdad que **google map**  es una poderosa plataforma y que a demas de rapida posee buena documentación y tiene buenas herramientas nos limita el desarrollo de aplicaciones y ademas por la  información bancaria que aunque no fueramos  a necesitar nunca pagar nada tenemos que estar obligados a proveerle si por que si, por esta razon fue desplazado como opcion viable para este proyecto.
+
+
+### Utilizando React-map-gl:
+
+El mayor uso de esta libreria y sus componentes estan en el archivo **Map.js**
+
+
+```
+│   ├── components
+│   │   └── Map.js
+```
+#
+ ```
+ 
+ ´´´
 
 
 
